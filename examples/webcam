@@ -1,0 +1,23 @@
+http://www.raspi.gen.tr/2013/03/04/mjpg-streamer-kullanarak-webcam-yayini-almak/
+http://alikian.me/2013/01/29/webcam-for-raspberry-pi-b/
+http://stackoverflow.com/questions/13437244/mjpg-streaming-with-a-raspberry-pi-and-a-webcam
+
+
+sudo apt-get install imagemagick luvcview uvccapture libjpeg8-dev subversion
+
+
+cd $HOME
+mkdir webcam
+cd webcam
+svn co https://svn.code.sf.net/p/mjpg-streamer/code/mjpg-streamer mjpg-streamer
+cd mjpg-streamer
+make
+
+
+sudo mjpg_streamer -i "/usr/lib/input_uvc.so -d /dev/video0 -y -r 320x240 -f 15" -o "/usr/lib/output_http.so -p 8090 -w ./www"
+
+
+
+
+
+
